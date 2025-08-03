@@ -12,6 +12,7 @@ DEPENDS += " \
     qtdeclarative-native \
     qtserialport \
     qtwayland \
+    qtserialbus \
 "
 
 RDEPENDS:${PN} += " \
@@ -19,6 +20,7 @@ RDEPENDS:${PN} += " \
     qtdeclarative \
     qtserialport \
     qtwayland \
+    qtserialbus \
 "
 
 EXTRA_OECMAKE += " \

@@ -10,3 +10,4 @@ do_install:append() {
     install -d ${D}/usr/bin
     install -m 0755 ${WORKDIR}/disable-serial-getty.sh ${D}/usr/bin/disable-serial-getty.sh
 }
+
