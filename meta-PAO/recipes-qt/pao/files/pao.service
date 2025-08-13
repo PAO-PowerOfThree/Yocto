@@ -9,8 +9,10 @@ Environment="WAYLAND_DISPLAY=wayland-1"
 Environment="QT_QPA_PLATFORM=wayland"
 Environment="QT_PLUGIN_PATH=/usr/lib/plugins"
 ExecStartPre=/usr/bin/disable-serial-getty.sh
+ExecStartPre=/usr/bin/ip.sh
+ExecStartPre=-/usr/bin/can.sh
 ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/appPAO
+ExecStart=/usr/bin/appPaoCluster
 Restart=always
 RestartSec=5
 User=root
@@ -18,4 +20,3 @@ Group=root
 
 [Install]
 WantedBy=default.target
-

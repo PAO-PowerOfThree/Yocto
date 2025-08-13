@@ -1,9 +1,11 @@
 SUMMARY = "This Recipe is for compiling the PAO Qt application"
 LICENSE = "CLOSED"
 
-SRC_URI = "git://github.com/PAO-PowerOfThree/Qt.git;branch=omar;protocol=https"
-SRCREV = "b44b46d4db8f4aeea28164085a8c7c77539bc55e"
-S = "${WORKDIR}/git/Test_Qt"
+SRC_URI = "git://github.com/PAO-PowerOfThree/Qt.git;branch=patrick;protocol=https"
+SRCREV = "1fec0f6e15286f61381e842e0456cfeb66c2acf2"
+S = "${WORKDIR}/git/Qt_Cluster"
+PV = "1.0"
+PR = "r1"
 
 inherit qt6-cmake systemd
 
@@ -13,6 +15,8 @@ DEPENDS += " \
     qtserialport \
     qtwayland \
     qtserialbus \
+    boost \
+    vsomeip \
 "
 
 RDEPENDS:${PN} += " \
@@ -21,6 +25,8 @@ RDEPENDS:${PN} += " \
     qtserialport \
     qtwayland \
     qtserialbus \
+    boost \
+    vsomeip \
 "
 
 EXTRA_OECMAKE += " \
@@ -32,13 +38,11 @@ EXTRA_OECMAKE += " \
 
 do_install() {
     install -d ${D}${bindir}
-
-    if [ ! -f "${B}/appPAO" ]; then
-        echo "Error: appPAO not found in ${B}!" >&2
+    if [ ! -f "${B}/appPaoCluster" ]; then
+        echo "Error: appPaoCluster not found in ${B}!" >&2
         exit 1
     fi
-
-    install -m 0755 ${B}/appPAO ${D}${bindir}/appPAO
+    install -m 0755 ${B}/appPaoCluster ${D}${bindir}/appPaoCluster
 }
 
-FILES:${PN} += "${bindir}/appPAO"
+FILES:${PN} += "${bindir}/appPaoCluster"
